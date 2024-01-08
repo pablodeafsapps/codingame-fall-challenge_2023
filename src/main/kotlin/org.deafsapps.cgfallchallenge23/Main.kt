@@ -144,17 +144,17 @@ private fun List<Drone>.contains(id: Int): Boolean = map { d -> d.id }.contains(
 
 private fun Drone.moveToVisibleCreature(visibleCreature: VisibleCreature) {
     System.err.println("ACTION: Move to Visible Creature -> id = ${visibleCreature.creature.id}, distance = ${Math.sqrt(visibleCreature.distance ?: 100_000.0)}")
-    println("MOVE ${visibleCreature.x + visibleCreature.vx} ${visibleCreature.y + visibleCreature.vy} ${getLightPower(creature = visibleCreature)}")
+    println("MOVE ${visibleCreature.x + visibleCreature.vx} ${visibleCreature.y + visibleCreature.vy} ${getLightPower(creature = visibleCreature)} Move to ID: ${visibleCreature.creature.id}")
 }
 
 private fun Drone.moveToCreatureArea(creature: Creature) {
-    System.err.println("ACTION: Move to Creature Area -> ${creature.radarPosition}")
-    println("MOVE ${getDirectionByRadarPosition(radarPosition = creature.radarPosition)} ${Random().nextInt(2)}")
+    System.err.println("ACTION: Move to Creature ${creature.id} Area -> ${creature.radarPosition}")
+    println("MOVE ${getDirectionByRadarPosition(radarPosition = creature.radarPosition)} ${Random().nextInt(2)} Move to ID: ${creature.id} area - {$creature.radarPosition}")
 }
 
 private fun Drone.moveToSurface() {
     System.err.println("ACTION: Move to Surface")
-    println("MOVE $x 500 0")
+    println("MOVE $x 500 0 Move to Surface")
 }
 
 private fun Drone.getDirectionByRadarPosition(radarPosition: RadarPosition): String =
